@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./main.css">
+  <title>lotto</title>
+</head>
+<body>
+  <div>
+    <p></p>
+    <button>로또번호생성</button>
+  </div>
+</body>
+</html>
+
+<script>
+  document.querySelector('button').addEventListener('click',function(){
+   var lotto = [];
+   for(var i = 0; i<6; i++){
+    var num = Math.floor((Math.random()*45)+1);
+    for(var j in lotto){
+          if(num == lotto[j]){ //현재 새로나온 숫자가 기존 숫자와 같으면
+              num = Math.floor(Math.random() * 44) + 1;
+          }
+      }
+      lotto.push(num);
+      var sNums = lotto.sort(function(a,b){
+        return a-b;
+      });
+    }
+   var num = [...sNums]
+   console.log(num)
+   document.querySelector('p').innerHTML = 
+    `<ul>
+      <li>${num[0]}</li>
+      <li>${num[1]}</li>
+      <li>${num[2]}</li>
+      <li>${num[3]}</li>
+      <li>${num[4]}</li>
+      <li>${num[5]}</li>
+    </ul>`
+   ;
+  })
+
+</script>
