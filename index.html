@@ -9,7 +9,9 @@
 </head>
 <body>
   <div>
-    <p></p>
+    <div>
+      <ul id="ball_wrap"></ul>
+    </div>
     <button>로또번호생성</button>
   </div>
 </body>
@@ -32,16 +34,85 @@
       });
     }
    var num = [...sNums]
-   document.querySelector('p').innerHTML = 
-    `<ul>
-      <li>${num[0]}</li>
-      <li>${num[1]}</li>
-      <li>${num[2]}</li>
-      <li>${num[3]}</li>
-      <li>${num[4]}</li>
-      <li>${num[5]}</li>
-    </ul>`
-   ;
+   
+  num.forEach(function(a,i){
+
+    /* switch 문 append 사용시 소스 */
+    /*
+    var li = document.createElement('li');
+    li.innerHTML = num[i];
+    document.getElementById('ball_wrap').append(li);
+    var ball_li = document.querySelectorAll('li')
+    console.log(ball_li)
+    console.log(typeof a)
+
+      switch(true) { //반복문에서 에서는 true or false 여부 체크!!!
+      case 1 < a && a < 10 :
+      console.log(a)
+      ball_li[i].style.backgroundColor = "red"
+      ball_li[i].style.color = "#fff"
+        break;
+      case 10 < a && a < 20 :
+      ball_li[i].style.backgroundColor = "blue"
+      ball_li[i].style.color = "#fff"
+
+        break;
+      case 20 < a  && a < 30 :
+      ball_li[i].style.backgroundColor = "green"
+      ball_li[i].style.color = "#fff"
+        break;
+      case 30 < a  && a< 40 :
+      ball_li[i].style.backgroundColor = "orange"
+        break;
+      default :
+      ball_li[i].style.backgroundColor = "black"
+      ball_li[i].style.color = "#fff"
+    }
+    */
+    
+    /* if문 사용시 소스 */
+    if(num[i] <=10){
+      document.getElementById('ball_wrap').innerHTML +=  
+    `<li style="background:yellow;"> ${num[i]} </li>`;
+    }else if(num[i] <=20){
+      document.getElementById('ball_wrap').innerHTML += 
+    `<li style="color:#fff; background:green;"> ${num[i]} </li>`;
+    }else if(num[i] <=30){
+      document.getElementById('ball_wrap').innerHTML += 
+      `<li style="color:#fff; background:blue;"> ${num[i]} </li>`;
+    }else if(num[i] <=40){
+      document.getElementById('ball_wrap').innerHTML += 
+      `<li style="background:orange;"> ${num[i]} </li>`;
+    }else {
+      document.getElementById('ball_wrap').innerHTML += 
+      `<li style="background:red;"> ${num[i]} </li>`;
+    }
   })
+  var ball_li = document.querySelectorAll('li');
+  ball_li.forEach(function(a){
+    a.classList.add('on')
+  })
+  
+  
+
+   /*
+   array lotto에서 숫자를 하나씩 가져온다.
+   그 숫자가 1이상 11이하이면 그 숫자의 li의 배경색이 빨간색
+   그 숫자가 11이상 20이하이면 그 숫자의 li의 배경색이 초록색
+   그 숫자가 21이상 30이하면 그 숫자의 li의 배경색이 파란색
+   그 숫자가 31이상 40이하면 그 숫자의 li의 배경색이 주황색
+   그 숫자가 41이상 45이하이면 그 숫자의 li의 배경색이 보라색
+   */
+    // var li_ball = document.querySelectorAll('ul > li');
+    // li_ball.forEach(function(a,i){
+
+    // })
+  //  num.forEach(function(a,i){
+  //   console.log(num[i].parentElement)
+  //   // if(1<=a<10){
+      
+  //   // }
+  //  })
+  })//click
 
 </script>
